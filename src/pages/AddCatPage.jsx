@@ -4,14 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 
-const AddCatPage = () => {
+const AddCatPage = ({ handleAdd }) => {
     const navigate = useNavigate();
-
-    const [rate, setRate] = useState(10);
-
-    const handleRate = (e) => {
-        setRate(e.target.value);
-    };
 
     const {
         register,
@@ -20,16 +14,16 @@ const AddCatPage = () => {
         formState: { errors },
     } = useForm();
 
+    const [rate, setRate] = useState(10);
+
+    const handleRate = (e) => {
+        setRate(e.target.value);
+    };
+
     const onSubmit = (data) => {
-        fetch('https://sb-cats.herokuapp.com/api/2/exci258/add', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        });
+        handleAdd(data);
         reset();
-        navigate('/');
+        navigate('/sb-cats/');
     };
 
     return (

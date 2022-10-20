@@ -1,56 +1,34 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 
-const EditCatPage = () => {
+const EditCatPage = ({ cats, handleEdit }) => {
     const navigate = useNavigate();
-
-    const [ids, setIds] = useState([]);
 
     const [rate, setRate] = useState(10);
 
     const { register, handleSubmit, reset } = useForm();
 
-    useEffect(() => {
-        fetch('https://sb-cats.herokuapp.com/api/2/exci258/show')
-            .then((response) => response.json())
-            .then((cats) =>
-                setIds(
-                    cats.data
-                        .filter((data) => data.id)
-                        .map((data) => {
-                            return {
-                                name: data.name,
-                                id: data.id,
-                                _id: data._id,
-                            };
-                        })
-                )
-            );
-    }, []);
+    const catIds = cats
+        .filter((cat) => cat.id)
+        .map((cat) => {
+            return {
+                name: cat.name,
+                id: cat.id,
+                _id: cat._id,
+            };
+        });
 
     const handleRate = (e) => {
         setRate(e.target.value);
     };
 
     const onSubmit = (data) => {
-        fetch('https://sb-cats.herokuapp.com/api/2/exci258/update/' + data.id, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                img_link: data.img_link,
-                age: data.age,
-                rate: data.rate,
-                description: data.description,
-                favourite: data.favourite,
-            }),
-        });
+        handleEdit(data);
         reset();
-        navigate('/');
+        navigate('/sb-cats/');
     };
 
     return (
@@ -82,7 +60,7 @@ const EditCatPage = () => {
                             value='Выберите кота'
                             disabled={true}
                         ></option>
-                        {ids.map((cat) => {
+                        {catIds.map((cat) => {
                             return (
                                 <option key={cat._id} value={cat.id}>
                                     {cat.name}

@@ -1,40 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 
-const DeleteCatPage = () => {
-    const [ids, setIds] = useState([]);
-
+const DeleteCatPage = ({ cats, hadleDelete }) => {
     const navigate = useNavigate();
 
     const { register, handleSubmit, reset } = useForm();
 
-    useEffect(() => {
-        fetch('https://sb-cats.herokuapp.com/api/2/exci258/show')
-            .then((response) => response.json())
-            .then((cats) =>
-                setIds(
-                    cats.data
-                        .filter((data) => data.id)
-                        .map((data) => {
-                            return {
-                                name: data.name,
-                                id: data.id,
-                                _id: data._id,
-                            };
-                        })
-                )
-            );
-    }, []);
+    const catIds = cats
+        .filter((cat) => cat.id)
+        .map((cat) => {
+            return {
+                name: cat.name,
+                id: cat.id,
+                _id: cat._id,
+            };
+        });
 
     const onSubmit = (data) => {
-        fetch('https://sb-cats.herokuapp.com/api/2/exci258/delete/' + data.id, {
-            method: 'DELETE',
-        });
+        hadleDelete(data.id);
         reset();
-        navigate('/');
+        navigate('/sb-cats/');
     };
 
     return (
@@ -66,7 +54,7 @@ const DeleteCatPage = () => {
                             value='Выберите кота'
                             disabled={true}
                         ></option>
-                        {ids.map((cat) => {
+                        {catIds.map((cat) => {
                             return (
                                 <option key={cat._id} value={cat.id}>
                                     {cat.name}

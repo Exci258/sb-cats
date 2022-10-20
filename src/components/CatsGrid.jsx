@@ -1,14 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import CatCard from './CatCard';
 
-const CatsGrid = () => {
-    const [cats, setCats] = useState([]);
-
-    useEffect(() => {
-        fetch('https://sb-cats.herokuapp.com/api/2/exci258/show')
-            .then((response) => response.json())
-            .then((cats) => setCats(cats.data));
-    }, []);
+const CatsGrid = ({ cats }) => {
     return (
         <div className='container grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-y-10 justify-items-center mx-auto py-10 mb-8'>
             {cats

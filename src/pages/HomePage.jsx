@@ -3,12 +3,12 @@ import CatsGrid from '../components/CatsGrid';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 
-const HomePage = () => {
+const HomePage = ({ cats }) => {
     return (
         <div className='min-h-screen flex flex-col'>
             <Header />
             <div className='grow'>
-                <CatsGrid />
+                <CatsGrid cats={cats} />
             </div>
             <Footer />
         </div>
