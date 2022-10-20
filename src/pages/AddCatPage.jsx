@@ -21,7 +21,7 @@ const AddCatPage = () => {
     } = useForm();
 
     const onSubmit = (data) => {
-        fetch('http://sb-cats.herokuapp.com/api/2/exci258/add', {
+        fetch('https://sb-cats.herokuapp.com/api/2/exci258/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

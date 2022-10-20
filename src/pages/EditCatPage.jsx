@@ -36,7 +36,7 @@ const EditCatPage = () => {
     };
 
     const onSubmit = (data) => {
-        fetch('http://sb-cats.herokuapp.com/api/2/exci258/update/' + data.id, {
+        fetch('https://sb-cats.herokuapp.com/api/2/exci258/update/' + data.id, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

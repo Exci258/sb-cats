@@ -12,7 +12,7 @@ const DeleteCatPage = () => {
     const { register, handleSubmit, reset } = useForm();
 
     useEffect(() => {
-        fetch('http://sb-cats.herokuapp.com/api/2/exci258/show')
+        fetch('https://sb-cats.herokuapp.com/api/2/exci258/show')
             .then((response) => response.json())
             .then((cats) =>
                 setIds(
