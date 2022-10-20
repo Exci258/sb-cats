@@ -7,7 +7,7 @@ const Header = () => {
         <div className='shadow-lg bg-white'>
             <header className='container mx-auto py-2 flex justify-between items-center'>
                 <Link
-                    to={'/sb-cats'}
+                    to={'/sb-cats/'}
                     className='flex gap-2 items-center hover:scale-105 hover:bg-slate-200 hover:rounded-3xl'
                 >
                     <GiHollowCat size={55} fill={'#08a652'} />
