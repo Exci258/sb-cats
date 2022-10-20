@@ -8,11 +8,11 @@ import HomePage from './pages/HomePage';
 const AppRouter = () => {
     return (
         <Routes>
-            <Route path={'/'} element={<HomePage />} />
-            <Route path={'/add'} element={<AddCatPage />} />
-            <Route path={'/edit'} element={<EditCatPage />} />
-            <Route path={'/delete'} element={<DeleteCatPage />} />
-            <Route path='*' element={<Navigate to={'/'} replace />} />
+            <Route path={'/sb-cats'} element={<HomePage />} />
+            <Route path={'/sb-cats/add'} element={<AddCatPage />} />
+            <Route path={'/sb-cats/edit'} element={<EditCatPage />} />
+            <Route path={'/sb-cats/delete'} element={<DeleteCatPage />} />
+            <Route path='*' element={<Navigate to={'/sb-cats'} replace />} />
         </Routes>
     );
 };
