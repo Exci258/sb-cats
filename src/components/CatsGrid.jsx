@@ -8,7 +8,7 @@ const CatsGrid = () => {
         fetch('https://sb-cats.herokuapp.com/api/2/exci258/show')
             .then((response) => response.json())
             .then((cats) => setCats(cats.data));
-    }, [cats]);
+    }, []);
     return (
         <div className='container grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-y-10 justify-items-center mx-auto py-10 mb-8'>
             {cats
