@@ -30,7 +30,7 @@ const DeleteCatPage = () => {
     }, []);
 
     const onSubmit = (data) => {
-        fetch('http://sb-cats.herokuapp.com/api/2/exci258/delete/' + data.id, {
+        fetch('https://sb-cats.herokuapp.com/api/2/exci258/delete/' + data.id, {
             method: 'DELETE',
         });
         reset();
