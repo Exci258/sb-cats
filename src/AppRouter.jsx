@@ -25,7 +25,7 @@ const AppRouter = () => {
         deleteCat(id);
     };
     const handleEdit = (info) => {
-        const editCat = async (info) => {
+        const editCat = async () => {
             const cat = await editData(info);
             setCats(
                 cats.map((cat) => {
