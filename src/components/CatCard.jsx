@@ -65,10 +65,12 @@ const CatCard = ({
                             alt='Avatar'
                             className='rounded-lg max-h-60'
                         />
-                        <div className='flex flex-col text-xl font-semibold'>
-                            <span>{getCorrectAge(catAge)}</span>
+                        <div className='flex flex-col text-xl font-semibold mt-2'>
+                            <span className='px-2 py-1 bg-[#08a652] rounded-md text-white'>
+                                {getCorrectAge(catAge)}
+                            </span>
                         </div>
-                        <p className='text-lg font-semibold text-center'>
+                        <p className='text-lg font-semibold text-center border-2 rounded-xl p-2 border-black mt-2'>
                             {catDescription}
                         </p>
                         <span className='absolute top-0 left-0'>
