@@ -66,13 +66,25 @@ const CatCard = ({
                             className='rounded-lg max-h-60'
                         />
                         <div className='flex flex-col text-xl font-semibold mt-2'>
-                            <span className='px-2 py-1 bg-[#08a652] rounded-md text-white'>
-                                {getCorrectAge(catAge)}
-                            </span>
+                            {catAge ? (
+                                <span className='px-2 py-1 bg-[#08a652] rounded-md text-white'>
+                                    {getCorrectAge(catAge)}
+                                </span>
+                            ) : (
+                                <span className='px-2 py-1 bg-red-600 rounded-md text-white'>
+                                    Возраст не указан
+                                </span>
+                            )}
                         </div>
-                        <p className='text-lg font-semibold text-center border-2 rounded-xl p-2 border-black mt-2'>
-                            {catDescription}
-                        </p>
+                        {catDescription ? (
+                            <p className='text-lg font-semibold text-center border-2 rounded-xl p-2 border-black mt-2'>
+                                {catDescription}
+                            </p>
+                        ) : (
+                            <p className='text-lg font-semibold text-center'>
+                                Описание отсутствует
+                            </p>
+                        )}
                         <span className='absolute top-0 left-0'>
                             {catFavourite ? (
                                 <AiFillHeart size={30} fill={'#e11d48'} />
