@@ -9,7 +9,7 @@ const CatsGrid = ({ cats }) => {
                 .map((cat) => {
                     return (
                         <CatCard
-                            key={cat._id}
+                            key={Math.trunc(Date.now() * Math.random())}
                             catImg={cat.img_link}
                             catName={cat.name}
                             catRating={cat.rate}
