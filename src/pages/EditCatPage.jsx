@@ -26,6 +26,11 @@ const EditCatPage = ({ cats, handleEdit }) => {
     };
 
     const onSubmit = (data) => {
+        for (const key in data) {
+            if (!data[key] && key !== 'favourite') {
+                delete data[key];
+            }
+        }
         handleEdit(data);
         reset();
         navigate('/sb-cats/');
